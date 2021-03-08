@@ -11,17 +11,22 @@ public class MainTest {
 
 	private WebDriver driver;
 	private WebDriverHelper browser;
+	private LogHelper logger;
 
 	@Before
 	public void beforeTest() {
 		// Initialize
+		logger = new LogHelper();
 		browser = new WebDriverHelper();
 		driver = browser.generateWebDriver();
+
+		logger.log("Driver initialized successfully");
 	}
 
 	@Test
 	public void mainTest() {
 		// Run tests
+		logger.log("Starting running tests...");
 
 		// To Do
 	}
@@ -31,5 +36,6 @@ public class MainTest {
 		if (driver != null) {
 			driver.quit();
 		}
+		logger.log("Tests execution finished");
 	}
 }

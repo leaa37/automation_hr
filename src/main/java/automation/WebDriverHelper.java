@@ -15,9 +15,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class WebDriverHelper {
 	private static final String VERSION = "89.0.4389.23"; // Change accordingly
 	private final int elementWaitSec = 5;
+	LogHelper logger;
 	ChromeOptions options;
 	
 	public WebDriver generateWebDriver(){
+		logger = new LogHelper();
+
 		// Browser configuration
 		WebDriver driver;
 		WebDriverManager.chromedriver().version(VERSION).setup();
@@ -37,6 +40,8 @@ public class WebDriverHelper {
 		return driver;
 	}
 
+	public void navigateToURL(WebDriver driver, String url) {
+		logger.log("Navigate to URL: " + url);
 		driver.get(url);
 	}
 
