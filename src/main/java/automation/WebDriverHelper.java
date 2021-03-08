@@ -1,16 +1,25 @@
 package automation;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class WebDriverHelper {
-	private static final String VERSION = "88.0.4324.96"; // Change accordingly
+	private static final String VERSION = "89.0.4389.23"; // Change accordingly
+	private final int elementWaitSec = 5;
 	ChromeOptions options;
 	
 	public WebDriver generateWebDriver(){
+		// Browser configuration
+		WebDriver driver;
 		WebDriverManager.chromedriver().version(VERSION).setup();
 		options = new ChromeOptions();
 		options.addArguments("start-maximized");
@@ -20,7 +29,29 @@ public class WebDriverHelper {
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--disable-browser-side-navigation");
 		options.addArguments("--disable-gpu");
-		return new ChromeDriver(options);
+		driver = new ChromeDriver(options);
+
+		// Driver configuration
+		driver.manage().timeouts().implicitlyWait(elementWaitSec, TimeUnit.SECONDS);
+
+		return driver;
 	}
 
+		driver.get(url);
+	}
+
+	public void waitForElement(WebDriver driver, WebElement element) {
+		WebDriverWait wait = new WebDriverWait(driver, elementWaitSec);
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+
+	public void doClickOnElement(WebDriver driver, WebElement element) {
+		waitForElement(driver, element);
+		element.click();
+	}
+	public void setTextOnElement(WebDriver driver, WebElement element, String text) {
+		waitForElement(driver, element);
+		element.sendKeys(text);
+	}
+	
 }
