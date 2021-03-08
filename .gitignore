@@ -2,7 +2,7 @@
 target/
 
 # Settings
-settings/
+.settings/
 *.classpath
 *.project
 
