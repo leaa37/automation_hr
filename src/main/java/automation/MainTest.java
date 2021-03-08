@@ -27,8 +27,8 @@ public class MainTest {
 	public void mainTest() {
 		// Run tests
 		logger.log("Starting running tests...");
-
-		// To Do
+		new Login().run(browser, driver);
+		//new Logout().run(browser, driver);
 	}
 
 	@After
