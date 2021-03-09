@@ -3,8 +3,10 @@ target/
 
 # Settings
 .settings/
+.vscode/
 *.classpath
 *.project
+*.factorypath
 
 # Compiled class file
 *.class
