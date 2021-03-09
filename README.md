@@ -3,10 +3,10 @@ Automation Project Repository
 
 # Project Structure
 
-/automation: contains base framework and helpers
-/pageobject: contains files from Page Object design
-/scripts: contains all test cases scripts
-/utils: contains utils, like constants
+automation: contains base framework and helpers
+pageobject: contains files from Page Object design
+scripts: contains all test cases scripts
+utils: contains utils, like constants
 
 # Scripts:
 
