@@ -29,9 +29,33 @@ public class MainTest {
 	}
 
 	@Test
-	public void search() throws Exception {
-		logger.log("Starting running test: SEARCH");
-		new Search(browser, driver).runTest();
+	public void searchTrial() throws Exception {
+		logger.log("Starting running test: SEARCH 'trial'");
+		new Search(browser, driver).runTest("trial");
+	}
+
+	@Test
+	public void searchApi() throws Exception {
+		logger.log("Starting running test: SEARCH 'api'");
+		new Search(browser, driver).runTest("api");
+	}
+
+	@Test
+	public void downloadWindowsProduct() throws Exception {
+		logger.log("Starting running test: DOWNLOAD WINDOWS PRODUCT");
+		new Download(browser, driver).runTest("Windows");
+	}
+
+	@Test
+	public void downloadMacProduct() throws Exception {
+		logger.log("Starting running test: DOWNLOAD MAC PRODUCT");
+		new Download(browser, driver).runTest("Mac");
+	}
+
+	@Test
+	public void downloadLinuxProduct() throws Exception {
+		logger.log("Starting running test: DOWNLOAD LINUX PRODUCT");
+		new Download(browser, driver).runTest("Linux");
 	}
 
 	@After

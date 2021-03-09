@@ -27,7 +27,7 @@ public class Search {
 		this.driver = driver;
 	}
 
-	public void runTest() throws Exception {
+	public void runTest(String searchText) throws Exception {
 		// Initialize Page Object
 		mainPage = new MainPage();
 		searchPage = new SearchPage();
@@ -44,8 +44,8 @@ public class Search {
 		this.acceptBrowserCookies();
 
 		// Search in Main page
-		this.search("trial");
-		this.search("api");
+		this.search(searchText);
+		this.search(searchText);
 	}
 
 	public void checkPreconditions() {
@@ -56,29 +56,29 @@ public class Search {
 		Thread.sleep(1500);
 	}
 
-	public void search(String text) throws Exception {
+	public void search(String searchText) throws Exception {
 		// Do search
-		this.doSearch(text);
+		this.doSearch(searchText);
 
 		// Validate search
-		this.validateSearch(text);
+		this.validateSearch(searchText);
 	}
 
-	public void doSearch(String text) throws Exception {
+	public void doSearch(String searchText) throws Exception {
 		// Click on search button
 		browser.waitForElement(driver, mainPage.searchBtn);
 		browser.doClickOnElement(driver, mainPage.searchBtn);
 
 		// Search text
 		browser.waitForElement(driver, mainPage.searchInput);
-		browser.setTextOnElement(driver, mainPage.searchInput, text);
+		browser.setTextOnElement(driver, mainPage.searchInput, searchText);
 		mainPage.searchInput.sendKeys(Keys.ENTER);
 	}
 
-	public void validateSearch(String text) throws Exception {
+	public void validateSearch(String searchText) throws Exception {
 		// Validate search title
 		browser.waitForElement(driver, searchPage.searchedTxt);
-		Assert.assertEquals("Searched for: " + text, searchPage.searchedTxt.getText());
+		Assert.assertEquals("Searched for: " + searchText, searchPage.searchedTxt.getText());
 
 		// Validate search results
 		browser.waitForElement(driver, searchPage.searchResults);
@@ -86,7 +86,7 @@ public class Search {
 		List<WebElement> resultELements = searchPage.searchResults.findElements(By.xpath("div"));
 		for (WebElement element : resultELements) {
 			browser.waitForElement(driver, element);
-			if (!element.getText().contains(text)) {
+			if (!element.getText().contains(searchText)) {
 				//fail("Search result no contains '" + text + "' text: " + element.getText());
 			}
 		}

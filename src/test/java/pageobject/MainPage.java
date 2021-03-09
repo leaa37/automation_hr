@@ -17,4 +17,10 @@ public class MainPage {
 	@FindBy(name="as_q")
 	public WebElement searchInput;
 
+	@FindBy(xpath="//*[@class='main-menu-product']")
+	public WebElement productMenu;
+
+	@FindBy(xpath="//*[@href='https://www.mulesoft.com/lp/dl/studio']")
+	public WebElement downloadProductBtn;
+
 }

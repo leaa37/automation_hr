@@ -6,4 +6,5 @@ public class Constants {
 	public static final String loginPassword = "T730sh32";
 	public static final String profileTextLogo = "LG";
 	public static final String profileFullName = "Leandro Garcia";
+	public static final String downloadedText = "Thank you for downloading Anypoint Studio and Mule";
 }
