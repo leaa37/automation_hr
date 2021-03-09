@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-
 import scripts.login.Login;
 
 public class MainTest {
@@ -24,11 +23,9 @@ public class MainTest {
 	}
 
 	@Test
-	public void mainTest() {
-		// Run tests
-		logger.log("Starting running tests...");
-
-		// To Do
+	public void login() throws Exception {
+		logger.log("Starting running test: LOGIN");
+		new Login(browser, driver).runTest();
 	}
 
 	@After
