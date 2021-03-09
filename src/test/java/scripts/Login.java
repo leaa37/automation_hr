@@ -1,4 +1,4 @@
-package scripts.login;
+package scripts;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;

@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import scripts.login.Login;
+import scripts.Login;
 
 public class MainTest {
 
