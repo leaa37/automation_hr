@@ -53,7 +53,7 @@ public class Login {
 
 	public void acceptBrowserCookies() throws Exception {
 		browser.doClickOnElement(driver, mainPage.acceptCookiesBtn);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 	}
 
 	public void doLogin() throws Exception {

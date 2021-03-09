@@ -54,6 +54,7 @@ public class WebDriverHelper {
 		waitForElement(driver, element);
 		element.click();
 	}
+
 	public void setTextOnElement(WebDriver driver, WebElement element, String text) {
 		waitForElement(driver, element);
 		element.sendKeys(text);

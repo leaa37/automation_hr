@@ -49,7 +49,7 @@ public class Download {
 
 	public void acceptBrowserCookies() throws Exception {
 		browser.doClickOnElement(driver, mainPage.acceptCookiesBtn);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 	}
 
 	public void goToDownloadPage() throws Exception {
