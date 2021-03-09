@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import scripts.login.Login;
+import scripts.*;
 
 public class MainTest {
 
@@ -26,6 +26,12 @@ public class MainTest {
 	public void login() throws Exception {
 		logger.log("Starting running test: LOGIN");
 		new Login(browser, driver).runTest();
+	}
+
+	@Test
+	public void search() throws Exception {
+		logger.log("Starting running test: SEARCH");
+		new Search(browser, driver).runTest();
 	}
 
 	@After

@@ -1,4 +1,4 @@
-package scripts.login;
+package scripts;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -7,11 +7,13 @@ import org.openqa.selenium.support.PageFactory;
 import automation.WebDriverHelper;
 import pageobject.HomePage;
 import pageobject.LoginPage;
+import pageobject.MainPage;
 import utils.Constants;
 
 public class Login {
 	private WebDriverHelper browser;
 	private WebDriver driver;
+	private MainPage mainPage;
 	private LoginPage loginPage;
 	private HomePage homePage;
 
@@ -22,8 +24,10 @@ public class Login {
 
 	public void runTest() throws Exception {
 		// Initialize Page Object
+		mainPage = new MainPage();
 		loginPage = new LoginPage();
 		homePage = new HomePage();
+		PageFactory.initElements(driver, mainPage);
 		PageFactory.initElements(driver, loginPage);
 		PageFactory.initElements(driver, homePage);
 
@@ -47,12 +51,12 @@ public class Login {
 	}
 
 	public void acceptBrowserCookies() throws Exception {
-		browser.doClickOnElement(driver, loginPage.acceptCookiesBtn);
+		browser.doClickOnElement(driver, mainPage.acceptCookiesBtn);
 		Thread.sleep(1500);
 	}
 
 	public void doLogin() throws Exception {
-		browser.doClickOnElement(driver, loginPage.loginBtn);
+		browser.doClickOnElement(driver, mainPage.loginBtn);
 		browser.setTextOnElement(driver, loginPage.mailInput, Constants.loginUserName);
 		browser.setTextOnElement(driver, loginPage.passwordInput, Constants.loginPassword);
 		browser.doClickOnElement(driver, loginPage.doLoginBtn);
