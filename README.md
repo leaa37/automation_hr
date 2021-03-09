@@ -36,3 +36,9 @@ Automation Project Repository
 4. Download for 'Windows'
 5. Download for 'Mac'
 6. Download for 'Linux'
+
+# How to run tests
+Run from bash: mvn clean test
+
+# Test results
+Report will be save in '../target/report.html' when execution finished
