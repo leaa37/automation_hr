@@ -53,7 +53,7 @@ public class Search {
 
 	public void acceptBrowserCookies() throws Exception {
 		browser.doClickOnElement(driver, mainPage.acceptCookiesBtn);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 	}
 
 	public void search(String searchText) throws Exception {
@@ -84,10 +84,15 @@ public class Search {
 		browser.waitForElement(driver, searchPage.searchResults);
 
 		List<WebElement> resultELements = searchPage.searchResults.findElements(By.xpath("div"));
-		for (WebElement element : resultELements) {
-			browser.waitForElement(driver, element);
-			if (!element.getText().contains(searchText)) {
-				//fail("Search result no contains '" + text + "' text: " + element.getText());
+
+		if (resultELements.size() <= 2) {
+			fail("Not enough results obtained in search (<= 2)");
+		} else {
+			for (WebElement element : resultELements) {
+				browser.waitForElement(driver, element);
+				if (!element.getText().contains(searchText)) {
+					//fail("Search result not contains '" + text + "' text: " + element.getText());
+				}
 			}
 		}
 	}
